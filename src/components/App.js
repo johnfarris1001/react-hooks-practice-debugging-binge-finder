@@ -13,7 +13,10 @@ function App() {
   const [filterByRating, setFilterByRating] = useState("");
 
   useEffect(() => {
-    Adapter.getShows().then((shows) => setShows(shows));
+    Adapter.getShows()
+      .then((shows) => {
+        setShows(shows)
+      });
   }, []);
 
   useEffect(() => {
@@ -37,10 +40,12 @@ function App() {
     });
   }
 
-  let displayShows = shows;
+  let displayShows = shows.filter(s => {
+    return s.name.toLowerCase().includes(searchTerm)
+  });
   if (filterByRating) {
     displayShows = displayShows.filter((s) => {
-      s.rating.average >= filterByRating;
+      return s.rating.average >= filterByRating;
     });
   }
 

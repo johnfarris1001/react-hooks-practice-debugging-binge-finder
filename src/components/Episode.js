@@ -1,11 +1,11 @@
 import React from "react";
 
 function Episode(props) {
-  let { myEpisode } = props;
+
 
   return (
     <div>
-      Episode {myEpisode.number} - {myEpisode.name}
+      Episode {props.eachEpisode.number} - {props.eachEpisode.name}
     </div>
   );
 }
